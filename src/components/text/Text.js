@@ -4,10 +4,28 @@ import Modal from '../Modal/Modal';
 
 
 const Text = () => {
-    const [valid, setValid] = useState(false);
+    const [inValid, setInvalid] = useState(false);
     const [require, setRequire] = useState("Valid email required");
-    const [email,setEmail]=useState("");
-    const[finalemail, setFianlemail]=useState("");
+    const [showModal, setShowModal] = useState(false); 
+
+    const dismissHandler = () => {
+        setShowModal(false);
+    }
+
+    const [typedEmail, setTypedEmail] = useState('');
+    const subBtnHandler = () => {
+        const email = document.getElementById('input-field').value;
+        if (email.includes('@')) {
+            setTypedEmail(email);
+            setInvalid(false);
+            setShowModal(true);
+        }
+        else {
+            setInvalid(true);
+            setShowModal(false);
+        }
+    }
+
     return (
         <div className='align'>
             <h1>Stay updated!</h1>
@@ -27,30 +45,18 @@ const Text = () => {
                 </div>
                 <div className='email'>
                     <p> Email address</p>
-                    <p className='error'> {valid && require}</p>
+                    <p className='error'> {inValid && require}</p>
                 </div>
                 <div className="mail">
-                    <input className='input' type='email' placeholder='email@company.com' onChange={(event)=>setEmail( event.target.value)}></input>
-                    <button className='subscribe' onClick={()=>{
-                        
-                        if(!email.includes("@")){
-                            setValid(true);
-                            
-                        }
-                        else{
-                            setValid(false);
-                            setFianlemail(email);
-                           
-                        }
-                    }}>Subscribe to monthly newsletter</button> </div>
+                    <input id='input-field' className='input' type='email' placeholder='email@company.com'></input>
+                    <button className='subscribe' onClick={() => subBtnHandler()}>
+                        Subscribe to monthly newsletter</button> </div>
             </div>
-
-
-              <div className='modal'>
-                <Modal fianlemail={finalemail}></Modal>
-                
-              </div>     
-
+            <div className={`${showModal ? 'show-modal' : 'hide-modal'}`}>
+                <Modal typedEmail={typedEmail}
+                dismissHandler={dismissHandler}
+                showModal={showModal}></Modal>
+            </div>
         </div>
     )
 }

@@ -32,6 +32,9 @@ body{
 .error{
     color:rgb(255, 103, 103);
 }
-.modal{
+.show-modal{
+    display: block;
+}
+.hide-modal{
     display: none;
 }
