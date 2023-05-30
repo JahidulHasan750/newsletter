@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(131, 45, 110);
+    color: rgb(19, 250, 123);
+}
+
+.list{
+    display: flex;
+    gap:10px;
+}
+.email{
+    display: flex;
+    justify-content: space-between;
+}
+.input{
+    border-radius: 10px;
+    padding: 10px;
+}
+.mail{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+.subscribe{
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(221, 231, 27);
+}
+.align{
+    padding-top: 50px;
+    text-align: left;
+}
+.error{
+    color:rgb(255, 103, 103);
+}
+.modal{
+    display: none;
+}
