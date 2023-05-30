@@ -1,10 +1,8 @@
 .App {
   text-align: center;
   display: flex;
-  position: absolute;
-  top:15%;
-  left:50%;
-  transform: translate(-50%,-9%);
+ margin: 6% 15%;
+ 
   width: 60vw;
   height: 70vh;
   background-color: rgb(24, 54, 86);

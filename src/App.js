@@ -8,7 +8,7 @@ function App() {
     <div className="App">
     <Text></Text>
     <Right></Right>
-    <Modal></Modal>
+   
     </div>
   );
 }

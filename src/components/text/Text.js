@@ -6,8 +6,11 @@ import Modal from '../Modal/Modal';
 const Text = () => {
     const [valid, setValid] = useState(false);
     const [require, setRequire] = useState("Valid email required");
+    const [showModal,setShowModal]=useState(false);
     const [email,setEmail]=useState("");
-    const[finalemail, setFianlemail]=useState("");
+    const modalhandle=()=>{
+        setShowModal(false);
+    }
     return (
         <div className='align'>
             <h1>Stay updated!</h1>
@@ -30,24 +33,27 @@ const Text = () => {
                     <p className='error'> {valid && require}</p>
                 </div>
                 <div className="mail">
-                    <input className='input' type='email' placeholder='email@company.com' onChange={(event)=>setEmail( event.target.value)}></input>
+                    <input className='input' type='email' placeholder='email@company.com' id='getemail'></input>
                     <button className='subscribe' onClick={()=>{
-                        
+                        const email=document.getElementById('getemail').value;
                         if(!email.includes("@")){
                             setValid(true);
-                            
+                            setShowModal(false);
                         }
                         else{
                             setValid(false);
-                            setFianlemail(email);
+                            setEmail(email);
+                            setShowModal(true);
+                            
                            
                         }
                     }}>Subscribe to monthly newsletter</button> </div>
             </div>
 
 
-              <div className='modal'>
-                <Modal fianlemail={finalemail}></Modal>
+              <div className={`${showModal? "show-modal":"hide-modal"}`}>
+                <Modal email={email}
+                modalhandle={modalhandle}></Modal>
                 
               </div>     
 
